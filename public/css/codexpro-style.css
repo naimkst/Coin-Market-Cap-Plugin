@@ -1,0 +1,104 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.cryptocurrencies-table-area {
+    padding: 40px;
+}
+.cryptocurrencies-table-area select {
+    box-shadow: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #111111;
+}
+.cryptocurrencies-table-area input {
+    box-shadow: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #111111;
+}
+.cryptocurrencies-table-area select:focus {
+    box-shadow: none;
+}
+.cryptocurrencies-table-area input:focus {
+    box-shadow: none;
+}
+.table tr {
+    background-color: transparent;
+}
+.table tr:nth-child(even) {
+    background-color: #F9F9F9;
+}
+.table .price-graph {
+    width: 162px;
+    max-width: 200px;
+    display: block;
+    height: 80px;
+    margin: 0 auto;
+}
+.table .price-graph .chart {
+    margin-top: -30px;
+}
+.table .table tr th {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111111;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 2px;
+}
+.table tr td {
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a4a4a;
+}
+.table .coin-info {
+    text-decoration: none;
+    color: #428ACA
+}
+.table .coin-info .coin-info-top {
+    display: flex;
+    align-items: center;
+}
+.table .coin-info .coin-info-top .coin_logo img {
+    max-width: 20px;
+}
+.table .coin-info .coin-info-top .coin_symbol {
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 5px;
+    color: #428ACA;
+    text-transform: uppercase;
+}
+.table .coin_name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #428ACA;
+}
+
+.table .changes.down {
+    color: #FF0000;
+}
+.table .changes.up {
+    color: #008000;
+}
+.cryptocurrencies-table-area .pagination .paginate_button {
+    margin: 0 5px;
+}
+.cryptocurrencies-table-area .pagination .paginate_button a {
+    box-shadow: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+.data-table .dataTables_wrapper div.dataTables_info {
+    display: none;
+}
+.section-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #222222;
+}
