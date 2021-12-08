@@ -7,7 +7,7 @@ jQuery(document).ready(function () {
     const settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&page=1&per_page=10&order=market_cap_desc",
+        "url": "https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&page=10&per_page=10&order=market_cap_desc",
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "coingecko.p.rapidapi.com",
@@ -15,12 +15,19 @@ jQuery(document).ready(function () {
         }
     };
 
+    function getChart() {
+
+    }
+
+
+
+
     jQuery.ajax(settings).done(function (response) {
 
         const table1 = jQuery(".cryptocurrencies-table").DataTable();
 
         jQuery.each(response, function (i, data) {
-
+            console.log(data);
             var html = '<tr>' +
                 '<td>' +
                 '<a href="#" class="coin-info">' +
@@ -39,10 +46,6 @@ jQuery(document).ready(function () {
                 '<td><span class="supply">' + data.max_supply + '</span></td>' +
                 '<td><div class="price-graph"><div id="' + data.symbol + '" class="chart ' + data.symbol + '"></div></div></td>' +
                 '</tr>'
-                
-                
-            
-
 
 
             const tr = jQuery(html);
@@ -141,22 +144,39 @@ jQuery(document).ready(function () {
                         tooltip: {
                             enabled: false,
                         },
-                    },
+                    }
 
                 };
 
-                var test='.'+data.symbol;
+                var charSymble = '.' + data.symbol;
 
-                var chart = new ApexCharts(document.querySelector(test), options);
+                var chart = new ApexCharts(document.querySelector(charSymble), options);
                 chart.render();
-               
-                try {
-                    ApexCharts.exec(data.symbol, 'updateSeries', [{
-                        data: [data.low_24h, data.high_24h]
-                    }]);
-                }
-                catch (e) {
-                }
+
+
+                const settings2 = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://coingecko.p.rapidapi.com/coins/"+data.id+"/market_chart/range?from=1638357091&vs_currency=usd&to=1638529891",
+                    "method": "GET",
+                    "headers": {
+                        "x-rapidapi-host": "coingecko.p.rapidapi.com",
+                        "x-rapidapi-key": "17d60d1a08msh7e3b64d98189c2fp168cf4jsn2b39c1f283f9"
+                    }
+                };
+
+                
+
+                jQuery.ajax(settings2).done(function (response) {
+                
+                    try {
+                        ApexCharts.exec(data.symbol, 'updateSeries', [{
+                            data: response.market_caps
+                        }]);
+                    }
+                    catch (e) {
+                    }
+                });
 
             };
 
